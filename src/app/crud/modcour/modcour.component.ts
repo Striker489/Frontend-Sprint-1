@@ -18,7 +18,8 @@ export class ModcourComponent {
     recommendedCourses: [],
     image: '',
     category: '',
-    lessons: []
+    lessons: [],
+    id: 0
   };
 lessons: number[] = this.cour.lessons;
 

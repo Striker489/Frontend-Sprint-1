@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, mergeMap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cour } from '../classes/Cour';
 
 @Injectable({
@@ -13,7 +13,11 @@ export class CourService {
   constructor(private http: HttpClient) { }
 
   getAllCours(): Observable<Cour[]> {
-    return this.http.get<Cour[]>(this.baseUrl);
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<Cour[]>(this.baseUrl, { headers: reqHeader });
   }
   addLesson(courseId: number, lesson: number): Observable<Cour> {
     const url = `${this.baseUrl}/${courseId}`;

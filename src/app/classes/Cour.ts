@@ -12,7 +12,7 @@ export class Cour{
     public recommendedLevel: string, 
     public recommendedCourses: number[],
     public image: string, public lessons: number[],
-    public id?: number
+    public id: number
     ){}
     
     }

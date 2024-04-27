@@ -25,7 +25,8 @@ export class AddcourComponent {
     recommendedCourses: [],
     image: '',
     category: '',
-    lessons: []
+    lessons: [],
+    id: 0
   }
 
 

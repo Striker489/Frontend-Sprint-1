@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Add the missing import statement for Router
 
-import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
 @Component({
   selector: 'app-signin',
@@ -23,7 +23,7 @@ export class SigninComponent {
         
         if ( response) {
           const token = response;
-          localStorage.setItem('token', response);
+          localStorage.setItem('token', response.token);
           console.log(response);
        this.router.navigate(['/instructor']);
         
