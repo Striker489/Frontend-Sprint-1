@@ -1,0 +1,22 @@
+<div *ngIf="cours && cours.length > 0">
+    <h2>All cours</h2>
+    <ul>
+      <li *ngFor="let course of cours">
+        <h3>{{ course.title }}</h3>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <p><strong>Category:</strong> {{ course.category }}</p>
+        <p><strong>Difficulty:</strong> {{ course.difficulty }}</p>
+        <p><strong>Premium:</strong> {{ course.premium ? 'Yes' : 'No' }}</p>
+        <p><strong>Recommended Level:</strong> {{ course.recommendedLevel }}</p>
+        <img [src]="(convert(course.image))" alt="Cour Image">
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="cours && cours.length === 0">
+    <p>No cours found.</p>
+  </div>
+  
+  <div *ngIf="!cours">
+    <p>Loading cours...</p>
+  </div>

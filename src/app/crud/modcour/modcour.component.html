@@ -1,0 +1,19 @@
+<ul>
+    
+      <h3>{{ cour.title }}</h3>
+      <p><strong>Description:</strong> {{ cour.description }}</p>
+      <p><strong>Category:</strong> {{ cour.category }}</p>
+      <p><strong>Difficulty:</strong> {{ cour.difficulty }}</p>
+      <p><strong>Premium:</strong> {{ cour.premium ? 'Yes' : 'No' }}</p>
+      <p><strong>Recommended Level:</strong> {{ cour.recommendedLevel }}</p>
+      <p><strong>Recommended cours:</strong></p>
+      <ul>
+        <li *ngFor="let recommendedcour of cour.recommendedCourses">{{ recommendedcour }}</li>
+      </ul>
+      <p><strong>Lessons:</strong></p>
+      <ul>
+        <li *ngFor="let lesson of lessons">{{ lesson }}</li>
+      </ul>
+      <img [src]="(convert(cour.image))" alt="Cour Image">
+    
+  </ul>
