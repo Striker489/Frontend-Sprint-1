@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddcourComponent } from './crud/addcour/addcour.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path:'instructor',component:InstructorComponent },{path:'header',component:HeaderComponent}, 
   
   
-  { path:"addcour",component:AddcourComponent},{path:"modcour/:id",component:ModcourComponent},{path:"lesson/:id",component:AddLessonComponent},{path:"",component:AddquizComponent},{path:"quiz",component:AddquizComponent},{path:"addchapter",component:AddchapterComponent}];
+  { path:"addcour",component:AddcourComponent},{path:"modcour/:id",component:ModcourComponent},{path:"addlesson/:id",component:AddLessonComponent},{path:"",component:AddquizComponent},{path:"quiz",component:AddquizComponent},{path:"addchapter",component:AddchapterComponent}];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

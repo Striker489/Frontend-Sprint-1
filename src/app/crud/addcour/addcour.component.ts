@@ -55,7 +55,7 @@ export class AddcourComponent {
         console.log('Response after adding course:', response);
         if (confirm('Do you want to continue adding?')) {
           
-          this.router.navigate(['/addcour:/'+response.id]);
+          this.router.navigate(['/addlesson/'+response.id]);
         } else {
           this.router.navigate(['/dashboard']);
         }

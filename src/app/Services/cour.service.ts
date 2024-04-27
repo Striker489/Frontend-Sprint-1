@@ -11,13 +11,13 @@ export class CourService {
   private baseUrl = 'http://localhost:3000/api/cours/';
 
   constructor(private http: HttpClient) { }
-
+   reqHeader = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
+  });
   getAllCours(): Observable<Cour[]> {
-    var reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-    });
-    return this.http.get<Cour[]>(this.baseUrl, { headers: reqHeader });
+   
+    return this.http.get<Cour[]>(this.baseUrl, { headers: this.reqHeader });
   }
   addLesson(courseId: number, lesson: number): Observable<Cour> {
     const url = `${this.baseUrl}/${courseId}`;
@@ -29,7 +29,7 @@ export class CourService {
         cour.lessons.push(lesson);
         
         // Send a PUT request to update the course with the new lesson
-        return this.http.put<Cour>(url, cour);
+        return this.http.put<Cour>(url, cour,{ headers: this.reqHeader });
       })
     );
   }
@@ -48,7 +48,7 @@ export class CourService {
   }
 
   getCourById(id: number): Observable<Cour> {
-    return this.http.get<Cour>(`${this.baseUrl}/${id}`);
+    return this.http.get<Cour>(`${this.baseUrl}/${id}`,{ headers: this.reqHeader });
   }
 
   addCour(cour: Cour): Observable<Cour> {
@@ -57,15 +57,15 @@ export class CourService {
 
   updateCour(courId: number, cour: Cour): Observable<Cour> {
     const url = `${this.baseUrl}/${courId}`;
-    return this.http.put<Cour>(url, cour);
+    return this.http.put<Cour>(url, cour,{ headers: this.reqHeader });
   }
   
   deleteCour(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/${id}`,{ headers: this.reqHeader });
   }
 
   getCourByLessonId(lessonId: number): Observable<Cour> {
-    return this.http.get<Cour>(`${this.baseUrl}/lesson/${lessonId}`);
+    return this.http.get<Cour>(`${this.baseUrl}/lesson/${lessonId}`,{ headers: this.reqHeader });
   }
 }
   

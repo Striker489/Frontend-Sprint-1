@@ -1,48 +1,22 @@
-<header class="flex justify-between items-center bg-gray-900 text-white py-4 px-6">
-    <!-- Logo -->
+<div class="flex items-center justify-between bg-gray-800 text-white py-4 px-6">
+    <!-- Left section -->
     <div class="flex items-center">
-        <img src="logo.png" alt="Logo" class="h-8 w-8 mr-2">
-        <span class="text-xl font-bold">  </span>
+        <!-- Notifications icon -->
+        <mat-icon class="mr-4 cursor-pointer">notifications</mat-icon>
+        <!-- Messages icon -->
+        <mat-icon class="mr-4 cursor-pointer">message</mat-icon>
+        <!-- User profile pic -->
+        <img src="user-profile-pic-url" alt="User Profile" class="w-10 h-10 rounded-full">
     </div>
 
-    <!-- Notifications -->
-    <div class="relative mr-6">
-        <button class="focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-            </svg>
-        </button>
-        <!-- Notification badge -->
-        <div class="absolute top-0 right-0 h-3 w-3 bg-red-500 rounded-full"></div>
-    </div>
+    <!-- Center section -->
+    <div class="text-xl font-semibold">Learncraft</div>
 
-    <!-- Messages -->
-    <div class="relative mr-6">
-        <button class="focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-            </svg>
+    <!-- Right section -->
+    <div>
+        <!-- Icon button with user profile pic -->
+        <button mat-icon-button>
+            <img src="user-profile-pic-url" alt="User Profile" class="w-10 h-10 rounded-full">
         </button>
-        <!-- Messages badge -->
-        <div class="absolute top-0 right-0 h-3 w-3 bg-red-500 rounded-full"></div>
     </div>
-
-    <!-- User dropdown -->
-    <div class="relative">
-        <button class="flex items-center focus:outline-none">
-            <img src="user-avatar.png" alt="User" class="h-8 w-8 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                <path fill-rule="evenodd"
-                    d="M10 2a8 8 0 100 16 8 8 0 000-16zM2 10a8 8 0 1116 0 8 8 0 01-16 0z"
-                    clip-rule="evenodd"></path>
-            </svg>
-        </button>
-        <!-- User dropdown menu -->
-        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
-        </div>
-    </div>
-</header>
+</div>

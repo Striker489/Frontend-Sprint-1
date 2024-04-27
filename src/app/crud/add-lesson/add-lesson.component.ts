@@ -28,7 +28,7 @@ this.lesson.cour = Number(this.route.snapshot.paramMap.get('id'));
         console.log('Response after adding lesson:', response);
         if (confirm('Do you want to continue adding?')) {
           
-          this.router.navigate(['/add-chapter:/'+response.id]);
+          this.router.navigate(['/addquiz/:'+response.id]);
         } else {
           this.router.navigate(['/dashboard']);
         }

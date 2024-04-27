@@ -31,6 +31,9 @@ import { HeaderinstructorComponent } from './Frontcomponents/Dashboards/headerin
 import { FrontComponent } from './Layout/front/front.component';
 import { SigninComponent } from './Auth/signin/signin.component';
 import { InterceptorService } from './Services/interceptor.service';
+import { MatIconModule } from '@angular/material/icon';
+import { SignupComponent } from './Auth/signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -52,14 +55,14 @@ import { InterceptorService } from './Services/interceptor.service';
           HeaderComponent,
           SidebarinstructorComponent,
           HeaderinstructorComponent,
-          FrontComponent,SigninComponent,
+          FrontComponent,SigninComponent,SignupComponent
       
    
 
   ],
   imports: [
     BrowserModule,FormsModule,MatFormFieldModule,
-    AppRoutingModule,HttpClientModule,CommonModule, MatDialogModule,MatButtonModule,ReactiveFormsModule
+    AppRoutingModule,HttpClientModule,CommonModule, MatDialogModule,MatButtonModule,ReactiveFormsModule,MatIconModule
 
   ],
   providers: [

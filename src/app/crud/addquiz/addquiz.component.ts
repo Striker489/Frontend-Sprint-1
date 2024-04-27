@@ -41,7 +41,17 @@ export class AddquizComponent {
 
   submitQuiz() {
     this.quiz.Lesson=Number(this.route.snapshot.paramMap.get('id'));
+
     this.quiz.score=this.x;
+    this.quizService.addQuiz(this.quiz).subscribe(
+      (response: any) => {
+        console.log('New Quiz ID:', response.id);
+        this.router.navigate(['/Dashboard']);
+      },
+      (error: any) => {
+        console.error('Error adding quiz:', error);
+      }
+    );
     for (let index = 0; index < this.x; index++) {
       this.currentquest = this.questions[index];
       for (let index2 = 0; index2 < this.answers[index].length; index2++) {
@@ -64,15 +74,7 @@ export class AddquizComponent {
       );
     }
     console.log(this.quiz);
-    this.quizService.addQuiz(this.quiz).subscribe(
-      (response: any) => {
-        console.log('New Quiz ID:', response.id);
-        this.router.navigate(['/Dashboard']);
-      },
-      (error: any) => {
-        console.error('Error adding quiz:', error);
-      }
-    );
+    
   }
 }
 
