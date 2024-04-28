@@ -4,18 +4,11 @@ import { CourService } from '../../Services/cour.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-allcours',
-  templateUrl: './allcours.component.html',
-  styleUrl: './allcours.component.css'
+  selector: 'app-cours',
+  templateUrl: './cours.component.html',
+  styleUrl: './cours.component.css'
 })
-
-export class AllcoursComponent {
-fill(num: number): any {
-  
-    return Array(num).fill(0).map((x, i) => i);
-  
-}
- 
+export class CoursComponent {
   cours:Cour [] =[];
   constructor(private courService:CourService,private router:Router) {
     
@@ -37,7 +30,7 @@ fill(num: number): any {
   }
   modifier(id:number){
   
-    this.router.navigate(['instructor/modcour/'+id]);
+    this.router.navigate(['/modcour/',id]);
   }
   
 }

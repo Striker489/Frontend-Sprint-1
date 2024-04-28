@@ -33,6 +33,14 @@ import { SigninComponent } from './Auth/signin/signin.component';
 import { InterceptorService } from './Services/interceptor.service';
 import { MatIconModule } from '@angular/material/icon';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { ModchapterComponent } from './crud/modchapter/modchapter.component';
+import { SettingsComponent } from './personel/settings/settings.component';
+import { ProfileComponent } from './personel/profile/profile.component';
+import { QuillModule } from 'ngx-quill';
+import { CoursComponent } from './User/cours/cours.component'; 
+
+
+
 
 
 @NgModule({
@@ -55,14 +63,14 @@ import { SignupComponent } from './Auth/signup/signup.component';
           HeaderComponent,
           SidebarinstructorComponent,
           HeaderinstructorComponent,
-          FrontComponent,SigninComponent,SignupComponent
+          FrontComponent,SigninComponent,SignupComponent, ModchapterComponent, SettingsComponent, ProfileComponent, CoursComponent
       
    
 
   ],
   imports: [
     BrowserModule,FormsModule,MatFormFieldModule,
-    AppRoutingModule,HttpClientModule,CommonModule, MatDialogModule,MatButtonModule,ReactiveFormsModule,MatIconModule
+    AppRoutingModule,HttpClientModule,CommonModule, MatDialogModule,MatButtonModule,ReactiveFormsModule,MatIconModule,QuillModule.forRoot()
 
   ],
   providers: [

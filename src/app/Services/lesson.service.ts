@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Lesson } from '../classes/Lesson';
 
@@ -17,7 +17,7 @@ export class LessonService {
   }
   
   getLessonById(id: number): Observable<Lesson> {
-    return this.http.get<Lesson>(`${this.baseUrl}/${id}`);
+    return this.http.get<Lesson>(`${this.baseUrl}${id}`);
   }
 
   addLesson(lesson: Lesson): Observable<Lesson> {
@@ -25,15 +25,20 @@ export class LessonService {
   }
 
   updateLesson(lessonId: number, lesson: Lesson): Observable<Lesson> {
-    const url = `${this.baseUrl}/${lessonId}`;
+    const url = `${this.baseUrl}${lessonId}`;
     return this.http.put<Lesson>(url, lesson);
   }
   
   deleteLesson(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}${id}`);
   }
 
   getLessonByLessonId(lessonId: number): Observable<Lesson> {
-    return this.http.get<Lesson>(`${this.baseUrl}/lesson/${lessonId}`);
+    return this.http.get<Lesson>(`${this.baseUrl}/lesson${lessonId}`);
+  }
+  getLessonNameById(id: number): Observable<string> {
+    return this.http.get<Lesson>(`${this.baseUrl}${id}`).pipe(
+      map(Lesson => Lesson.title)
+    );
   }
 }

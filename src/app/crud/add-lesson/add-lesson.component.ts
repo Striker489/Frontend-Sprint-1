@@ -13,26 +13,31 @@ lesson:Lesson = {
   title: '',
   description: '',
   chapters: [],
-  quiz: 0,
+ 
   id: 0,
-  cour: 0
+  cour:0
 }
 constructor(private lessonservice:LessonService, private router:Router,private route:ActivatedRoute) { }
 
   onSubmit() {
-this.lesson.cour = Number(this.route.snapshot.paramMap.get('id'));
-
+    this.lesson.cour = Number(this.route.snapshot.paramMap.get('id'));
+console.log(Number(this.route.snapshot.paramMap.get('id')))
+    console.log('aze',this.lesson);
+console.log(this.lesson.cour)
     this.lessonservice.addLesson(this.lesson).subscribe(
 
       (response) => {
         console.log('Response after adding lesson:', response);
         if (confirm('Do you want to continue adding?')) {
-          
-          this.router.navigate(['/addquiz/:'+response.id]);
+          console.log(this.lesson);
+          this.router.navigate(['instructor/add/quiz/'+response.id]);
         } else {
           this.router.navigate(['/dashboard']);
+          console.log(this.lesson);
         }
+        console.log(this.lesson);
       }
+      
 
     )
 

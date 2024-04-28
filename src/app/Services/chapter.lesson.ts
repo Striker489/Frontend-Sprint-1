@@ -7,6 +7,9 @@ import { Chapter } from '../classes/chapter';
   providedIn: 'root'
 })
 export class ChapterService {
+  getchapterbyname(arg0: number) {
+    throw new Error('Method not implemented.');
+  }
 
   private baseUrl = 'http://localhost:3000/api/chapters/';
 

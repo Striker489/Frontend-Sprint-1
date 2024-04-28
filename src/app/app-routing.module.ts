@@ -10,21 +10,51 @@ import { InstructorComponent } from './Frontcomponents/Dashboards/instructor/ins
 import { HeaderComponent } from './Frontcomponents/header/header.component';
 import { FrontComponent } from './Layout/front/front.component';
 import { SigninComponent } from './Auth/signin/signin.component';
+import { HeaderinstructorComponent } from './Frontcomponents/Dashboards/headerinstructor/headerinstructor.component';
+import { SignupComponent } from './Auth/signup/signup.component';
+import { ForgotpasswordComponent } from './Auth/forgotpassword/forgotpassword.component';
+import { ModlessonComponent } from './crud/modlesson/modlesson.component';
+import { ModquizComponent } from './crud/modquiz/modquiz.component';
+import { SettingsComponent } from './personel/settings/settings.component';
+import { ProfileComponent } from './personel/profile/profile.component';
+import path from 'path';
+import { AllcoursComponent } from './crud/allcours/allcours.component';
 
 const routes: Routes = [
-  
-  {path:'',component:FrontComponent},
-    {path:'signin',component:SigninComponent},
+  { path: '', component: FrontComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'forgot', component: ForgotpasswordComponent },
+  { path: 'head', component: HeaderComponent },
+ 
 
-  
-  
-  
-  
-  
-  {path:'instructor',component:InstructorComponent },{path:'header',component:HeaderComponent}, 
-  
-  
-  { path:"addcour",component:AddcourComponent},{path:"modcour/:id",component:ModcourComponent},{path:"addlesson/:id",component:AddLessonComponent},{path:"",component:AddquizComponent},{path:"quiz",component:AddquizComponent},{path:"addchapter",component:AddchapterComponent}];
+  {
+    path: 'instructor',
+    component: InstructorComponent,
+    children: [
+      { path: 'settings', component: SettingsComponent },
+      { path: 'profile', component: ProfileComponent },
+      {
+        path: '',component:AllcoursComponent},
+    
+      
+          { path: 'modcour/:id', component: ModcourComponent },
+          { path: 'modlesson/:id', component: ModlessonComponent },
+          { path: 'modquiz/:id', component: ModquizComponent },
+       
+      {
+        path: 'add',
+        children: [
+          { path: 'cour', component: AddcourComponent },
+          { path: 'lesson/:id', component: AddLessonComponent },
+          { path: 'quiz/:id', component: AddquizComponent },
+          { path: 'chapter/:id', component: AddchapterComponent },
+        ]
+      },
+    ]
+  },
+
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

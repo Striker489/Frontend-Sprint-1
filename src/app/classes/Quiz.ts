@@ -1,7 +1,7 @@
 
 export class Quiz{
     constructor(
-        public id: number,public Lesson:number,
+        public id: number,public lesson:number,
         public title: string,public description: string,
         public questions:Question[],
         public passingScore: number,
@@ -10,7 +10,7 @@ export class Quiz{
 }
 
 export class Question{
-    constructor(public id: number,quiz:number,
+    constructor(public id: number,public quiz:number,
         public question: string,
         public options: Answer[]) {
         
@@ -20,7 +20,7 @@ export class Question{
 export class Answer{
     constructor(
         public   id: number,
-        public Answer: string,
+        public answer: string,
         public isCorrect: boolean,
         public question:number
     ){}

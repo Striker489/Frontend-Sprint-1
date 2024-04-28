@@ -42,7 +42,7 @@ export class AddcourComponent {
   }
    
   cancel(): void {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/instrucor']);
   }
 
 
@@ -55,7 +55,7 @@ export class AddcourComponent {
         console.log('Response after adding course:', response);
         if (confirm('Do you want to continue adding?')) {
           
-          this.router.navigate(['/addlesson/'+response.id]);
+          this.router.navigate(['instructor/add/lesson/' + response.id]);
         } else {
           this.router.navigate(['/dashboard']);
         }
@@ -74,7 +74,7 @@ onFileSelected(event: any) {
   if (file) {
     const reader = new FileReader();
     reader.onload = () => {
-      // Remove the data URI prefix
+      
       const imageDataWithoutPrefix = reader.result as string;
       const imageData = imageDataWithoutPrefix.replace(/^data:image\/\w+;base64,/, '');
       
@@ -110,7 +110,7 @@ fetchcategories(){
     }
     this.cour1.category = selectedValue;
   }
-//recommandation
+
 allcourses:Cour[]=[]
 fetchcourses(){
   this.courseService.getAllCours().subscribe((courses)=>{

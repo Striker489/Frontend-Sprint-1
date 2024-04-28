@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './headerinstructor.component.css'
 })
 export class HeaderinstructorComponent {
-
+  local: string = '';
+  ngOnInit(): void {
+  this.local= localStorage.getItem('header') || '';
+    
+  }
+  
 }

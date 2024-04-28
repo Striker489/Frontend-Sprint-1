@@ -1,22 +1,23 @@
-<div class="flex items-center justify-between bg-gray-800 text-white py-4 px-6">
-    <!-- Left section -->
-    <div class="flex items-center">
-        <!-- Notifications icon -->
-        <mat-icon class="mr-4 cursor-pointer">notifications</mat-icon>
-        <!-- Messages icon -->
-        <mat-icon class="mr-4 cursor-pointer">message</mat-icon>
-        <!-- User profile pic -->
-        <img src="user-profile-pic-url" alt="User Profile" class="w-10 h-10 rounded-full">
-    </div>
+<header class="sticky top-0 z-50 bg-blue-500 py-4 bg-white">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <img src="assets/logo.png " alt="Logo" class="right-0 h-12 bg-white"> 
+        <h1 class="text-black font-semibold"> </h1>
+       <div class="flex items-center">
+        <h1 class="text-3xl text-black font-semibold mb-4">My Courses</h1>
 
-    <!-- Center section -->
-    <div class="text-xl font-semibold">Learncraft</div>
-
-    <!-- Right section -->
-    <div>
-        <!-- Icon button with user profile pic -->
-        <button mat-icon-button>
-            <img src="user-profile-pic-url" alt="User Profile" class="w-10 h-10 rounded-full">
-        </button>
+       </div>
+        <nav class="flex items-center">
+           
+            <div class="flex flex-col items-center space-y-2">
+                <h1 class="text-black text-lg font-semibold">Yassin Bouras</h1>
+                <div class="flex space-x-4">
+                    <mat-icon class="text-blue">messages</mat-icon>
+                    <mat-icon class="text-blue">notifications</mat-icon>
+                </div>
+            </div>
+            <div class="ml-4 rounded-full overflow-hidden border-2 border-black">
+                <img class="rounded h-12 w-12" src="assets/pfp.jpg" alt="Profile Picture">
+            </div>
+        </nav>
     </div>
-</div>
+</header>

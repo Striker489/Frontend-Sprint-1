@@ -5,7 +5,7 @@ export class Chapter{
    public     lesson: number, 
    public      title: string,
    public  description: string,
-   public  vid: string, 
+   public  video: string, 
    public    coursesContent: string[]
 
     ) {

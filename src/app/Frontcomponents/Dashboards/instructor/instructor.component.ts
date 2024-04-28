@@ -30,7 +30,7 @@ convert(imagedata:string) {
 }
 modifier(id:number){
 
-  this.router.navigate(['/modcour/:id',id]);
+  this.router.navigate(['/modcour/',id]);
 }
 
 }

@@ -48,7 +48,7 @@ export class CourService {
   }
 
   getCourById(id: number): Observable<Cour> {
-    return this.http.get<Cour>(`${this.baseUrl}/${id}`,{ headers: this.reqHeader });
+    return this.http.get<Cour>(`${this.baseUrl}${id}`,{ headers: this.reqHeader });
   }
 
   addCour(cour: Cour): Observable<Cour> {
@@ -56,12 +56,12 @@ export class CourService {
   }
 
   updateCour(courId: number, cour: Cour): Observable<Cour> {
-    const url = `${this.baseUrl}/${courId}`;
+    const url = `${this.baseUrl}${courId}`;
     return this.http.put<Cour>(url, cour,{ headers: this.reqHeader });
   }
   
   deleteCour(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`,{ headers: this.reqHeader });
+    return this.http.delete<void>(`${this.baseUrl}${id}`,{ headers: this.reqHeader });
   }
 
   getCourByLessonId(lessonId: number): Observable<Cour> {

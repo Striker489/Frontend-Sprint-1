@@ -1,22 +1,30 @@
-<div *ngIf="cours && cours.length > 0">
-    <h2>All cours</h2>
-    <ul>
-      <li *ngFor="let course of cours">
-        <h3>{{ course.title }}</h3>
-        <p><strong>Description:</strong> {{ course.description }}</p>
-        <p><strong>Category:</strong> {{ course.category }}</p>
-        <p><strong>Difficulty:</strong> {{ course.difficulty }}</p>
-        <p><strong>Premium:</strong> {{ course.premium ? 'Yes' : 'No' }}</p>
-        <p><strong>Recommended Level:</strong> {{ course.recommendedLevel }}</p>
-        <img [src]="(convert(course.image))" alt="Cour Image">
-      </li>
-    </ul>
+<div class="pt-20">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div *ngFor="let course of cours" class="course-card">
+      <div class="card border rounded-lg overflow-hidden shadow-md relative">
+        <img [src]="convert(course.image)" alt="{{ course.title }}" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <span *ngIf="course.premium" class="bg-green-500 absolute left-2 top-2 text-white px-2 py-1 rounded-full"><mat-icon class="inline-block w-5 h-5">payment</mat-icon></span>
+          <h3 class="text-xl font-bold mb-2 text-center">{{ course.title }}</h3>
+          <p class="text-gray-700 flex items-center justify-center"><mat-icon class="mr-2 text-amber-950">book</mat-icon> {{ course.category }}</p>
+          <p>{{ course.description }}</p>
+          <h6>Recommended for {{ course.recommendedLevel }}</h6>
+          <div class="rating flex items-center  mt-2">
+            <ng-container *ngFor="let i of fill(course.difficulty)">
+              <mat-icon class="text-yellow" aria-hidden="true">star</mat-icon>
+            </ng-container>
+            
+          </div>
+          <div class="mt-4">
+            <!-- Add any additional content here -->
+          </div>
+        </div>
+        <div class="absolute bottom-2 right-2">
+          <button (click)="modifier(course.id)" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-full">
+            <mat-icon class="text-gray-700">settings</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div *ngIf="cours && cours.length === 0">
-    <p>No cours found.</p>
-  </div>
-  
-  <div *ngIf="!cours">
-    <p>Loading cours...</p>
-  </div>
+</div>

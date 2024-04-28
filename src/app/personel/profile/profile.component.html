@@ -1,0 +1,24 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="border-r p-3 py-5 flex flex-col items-center text-center">
+            <img class="rounded-full mt-5 w-32" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile Picture">
+            <span class="font-semibold mt-2">Edogaru</span>
+            <span class="text-gray-500">edogaru.com.my</span>
+        </div>
+        <div class="border-r p-3 py-5">
+            <h4 class="text-center mb-3">Profile Settings</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="labels">Name</label><input type="text" class="form-input" placeholder={{user.firstname}}></div>
+                <div><label class="labels">Surname</label><input type="text" class="form-input" placeholder={{user.lastname}}></div>
+                <div><label class="labels">Mobile Number</label><input type="text" class="form-input" placeholder="Enter Phone Number"></div>
+                <div><label class="labels">Address Line 1</label><input type="text" class="form-input" placeholder="Enter Address Line 1"></div>
+                <div><label class="labels">Email </label><input type="text" class="form-input" placeholder={{user.email}}></div>
+                <div><label class="labels">Education</label><input type="text" class="form-input" placeholder="Education"></div>
+                <div><label class="labels">Country</label><input type="text" class="form-input" placeholder="Country"></div>
+                <div><label class="labels">State/Region</label><input type="text" class="form-input" placeholder="State/Region"></div>
+            </div>
+            <div class="mt-5 text-center"><button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-white" type="button">Save Profile</button></div>
+        </div>
+        
+    </div>
+</div>

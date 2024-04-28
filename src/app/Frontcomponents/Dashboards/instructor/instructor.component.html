@@ -1,30 +1,9 @@
-<div class="flex h-full right-0">
-    <app-headerinstructor></app-headerinstructor>
+<div class="h-full left-0">
+    <app-headerinstructor  ></app-headerinstructor>
     <div class="fixed h-full top-0 left-0 w-64 bg-white shadow">
         <app-sidebarinstructor></app-sidebarinstructor>
     </div>
-</div>
-
-<div class="ml-64 pt-20">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div *ngFor="let course of cours" class="course-card">
-            <div class="card border rounded-lg overflow-hidden shadow-md relative">
-      
-                <img [src]="convert(course.image)" alt="Course Image" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-xl font-bold mb-2">{{ course.title }}</h3>
-                    <p class="text-gray-700">{{ course.difficulty }}</p>
-                    <div class="mt-4">
-                        <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">Premium: {{ course.premium }}</span>
-                    </div>
-                </div>
-                <!-- Settings button -->
-                <button  (click)="modifier(course.id)">
-                    <button (click)="modifier(course.id)">
-                        <mat-icon class="width=20px height=100" >settings</mat-icon>
-                    </button>
-                </button>
-            </div>
-        </div>
+    <div class="ml-64"> <!-- Adjust margin-left to accommodate sidebar width -->
+        <router-outlet></router-outlet> <!-- This will display the component based on routing -->
     </div>
 </div>

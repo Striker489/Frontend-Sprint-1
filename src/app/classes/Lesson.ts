@@ -5,7 +5,7 @@ export class Lesson {
       public title: string,
       public description: string,
       public chapters: number[],
-      public quiz: number
+      public quiz?: number
     ) {}
   }
   

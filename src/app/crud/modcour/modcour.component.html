@@ -1,19 +1,93 @@
-<ul>
-    
-      <h3>{{ cour.title }}</h3>
-      <p><strong>Description:</strong> {{ cour.description }}</p>
-      <p><strong>Category:</strong> {{ cour.category }}</p>
-      <p><strong>Difficulty:</strong> {{ cour.difficulty }}</p>
-      <p><strong>Premium:</strong> {{ cour.premium ? 'Yes' : 'No' }}</p>
-      <p><strong>Recommended Level:</strong> {{ cour.recommendedLevel }}</p>
-      <p><strong>Recommended cours:</strong></p>
-      <ul>
-        <li *ngFor="let recommendedcour of cour.recommendedCourses">{{ recommendedcour }}</li>
-      </ul>
-      <p><strong>Lessons:</strong></p>
-      <ul>
-        <li *ngFor="let lesson of lessons">{{ lesson }}</li>
-      </ul>
-      <img [src]="(convert(cour.image))" alt="Cour Image">
-    
+<div *ngIf="!editMode" class="p-4 border rounded-md shadow-md">
+  <ul>
+    <h2 class="text-lg font-bold mb-2 text-gray-dark">{{ cour.title }}</h2>
+    <p class="mb-2"><strong>Description:</strong> {{ cour.description }}</p>
+    <p class="mb-2"><strong>Category:</strong> {{ cour.category }}</p>
+    <p class="mb-2"><strong>Difficulty:</strong> {{ cour.difficulty }}</p>
+    <p class="mb-2"><strong>Premium:</strong> {{ cour.premium ? 'Yes' : 'No' }}</p>
+    <p class="mb-2"><strong>Recommended Level:</strong> {{ cour.recommendedLevel }}</p>
+    <p class="mb-2"><strong>Recommended courses:</strong></p>
+    <ul>
+      <li *ngFor="let recommendedcour of cour.recommendedCourses" class="list-disc ml-4">{{ recommendedcour }}</li>
+    </ul>
+    <p class="mb-2"><strong>Lessons:</strong></p>
+
+    <ul>
+      <li>{{lessons}}</li>
+   <!--   <li *ngFor="let lessonName of reallessons; let i = index" class="list-disc ml-4">{{ lessonName }} (Index: {{ i }}) <p></p> -->
+    <li *ngFor="let lessonName of lessons; let i = index" class="list-disc ml-4">{{ lessonName }} 
+      <button (click)="editlesson(i+1)" class="bg-blue hover:bg-blue-700 text-BLACK font-bold py-2 px-4 rounded">Check Lesson</button>
+      
+      </li> 
+      <button (click)="addlesson()" class="bg-red hover:bg-red-700 text-BLACK font-bold py-2 px-4 rounded">Add Lesson</button>
+    </ul>
+    <img [src]="convert(cour.image)" alt="Course Image" class="mt-4">
   </ul>
+  <div class="flex justify-between">
+    <button (click)="toggleEditMode()" class="bg-blue-500 hover:bg-blue-700 text-b font-bold py-2 px-4 rounded">Edit</button>
+    <button (click)="cancel()" class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded">cancel</button>
+  </div>
+</div>
+<div *ngIf="editMode">
+
+  <form (submit)="saveChanges()" class="bg-white shadow-md rounded-lg p-10 mb-6"> 
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold mb-6 text-center">Modify Course</h1>
+      <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Title:</label>
+      <input type="text" [(ngModel)]="cour.title" placeholder={{cour.title}} id="title" name="title" class="w-3/5 input-field">
+    </div>
+    <div class="mb-6">
+      <label for="category" class="block text-sm font-semibold text-gray-700 mb-2">Category:</label>
+      <select name="category" id="category" (change)="onSelect($event)" class="w-3/5   input-field">
+        <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+     
+      </select>
+      <div *ngIf="customInputVisible" class="mt-2">
+        <input name="add" id="add" type="add" [(ngModel)]="customInputValue" placeholder="Enter custom value" class="w-3/5  input-field">
+        <button type="button" (click)="addCustomValue()" class="btn-primary ml-2">Add</button>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">Description:</label>
+      <textarea [(ngModel)]="cour.description" placeholder="{{cour.description}}" id="description" name="description" class="w-3/5  input-field"></textarea>
+    </div>
+    <div class="mb-6">
+      <label for="difficulty" class="block text-sm font-semibold text-gray-700 mb-2">Difficulty:</label>
+      <input type="range" min="1" max="10" [(ngModel)]="cour.difficulty" id="difficulty" name="difficulty" class="w-3/5  input-field">
+    </div>
+    <div class="mb-6">
+      <label for="isPremium" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
+        <input type="checkbox"  [(ngModel)]="cour.premium" id="isPremium" name="isPremium" class="mr-2">
+        Premium
+      </label>
+    </div>
+    <div class="mb-6">
+      <label for="recommendedLevel" class="block text-sm font-semibold text-gray-700 mb-2">Recommended Level:</label>
+      <select [(ngModel)]="cour.recommendedLevel" id="recommendedLevel" name="recommendedLevel" class="w-3/5  input-field">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </div>
+    <div class="mb-6">
+      <label for="selectedRecommendedCourses" class="block text-sm font-semibold text-gray-700 mb-2">Recommended Courses:</label>
+      <select [(ngModel)]="cour.recommendedCourses" id="selectedRecommendedCourses" name="selectedRecommendedCourses" class="w-3/5  input-field" multiple>
+        <option *ngFor="let course of allcourses" [ngValue]="course.id">{{ course.title }}</option>
+      </select>
+    </div>
+    <div class="mb-6">
+      <label for="images" class="block text-sm font-semibold text-gray-700 mb-2 drop-container" id="dropcontainer">
+        Upload Image:
+        <span class="drop-title">Drop files here</span>
+        or
+        <input type="file" id="images" accept="image/*" (change)="onimageselected($event)" required>
+      </label>
+    </div>
+    <div class="flex justify-between">
+      <button type="button"  class="bg-green hover:bg-blue-600 text-indigo-500 hover:blue font-semibold py-2 px-4 rounded inline-block shadow-lg" (click)="saveChanges()">Modify </button>
+      <button type="button" class="bg-red-500  hover:bg-blue text-indigo-500 font-semibold py-2 px-4 rounded inline-block shadow-lg"(click)="cancelEdit()">Cancel</button>
+      <button (click)="confirmDelete()" class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded">Delete</button>
+    </div>
+  </form>
+
+</div>

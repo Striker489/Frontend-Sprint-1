@@ -1,6 +1,10 @@
+<div class="flex justify-center items-center h-screen">
+  <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
+<h1 class="text-xl font-bold mb-1">Add Quiz</h1>
 <div>
     <h2 class="text-xl font-semibold mb-4">Quiz Title</h2>
-    <input type="text" [(ngModel)]="quiz.title" placeholder="Enter title" class="border border-gray-300 rounded-lg px-4 py-2 w-full">
+    <input type="text" name="title" [(ngModel)]="quiz.title" placeholder="Enter title" class="border border-gray-300 rounded-lg px-4 py-2 w-full">
+   
     <h2 class="text-xl font-semibold mb-4">Quiz Description</h2>
     <input type="text" [(ngModel)]="quiz.description" placeholder="Enter description" class="border border-gray-300 rounded-lg px-4 py-2 w-full">
     <h2 class="text-xl font-semibold mb-4">Passing Score</h2>
@@ -11,13 +15,16 @@
       <input type="text" [(ngModel)]="questions[x].question" placeholder="Enter question" class="border border-gray-300 rounded-lg px-4 py-2 mt-2 w-full">
       <button (click)="addAnswer(x)" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 mt-2">Add Answer</button>
       <div *ngFor="let answer of answers[x]; let y = index" class="mt-2">
-        <input type="text" [(ngModel)]="answers[x][y].Answer" placeholder="Enter answer" class="border border-gray-300 rounded-lg px-4 py-2 w-full">
+        <input type="text" [(ngModel)]="answers[x][y].answer" placeholder="Enter answer" class="border border-gray-300 rounded-lg px-4 py-2 w-full">
         <input type="checkbox" [(ngModel)]="answers[x][y].isCorrect" class="ml-2"> <!-- Checkbox for correct answer -->
       </div>
       <button (click)="removeQuestion(x)" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 mt-4">Remove Question</button>
     </div>
   
-    <button class="bg-blue hover:bg-blue-600 text-black font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="addQuestion()">Add Question</button>
-    <button class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 ml-4" (click)="submitQuiz()">Submit Quiz</button>
+ 
   </div>
-  
+  <button class="bg-blue hover:bg-blue-600 text-black font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="addQuestion()">Add Question</button>
+  <button class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 ml-4" (click)="submitQuiz()">Submit Quiz</button>
+</div>
+
+</div>

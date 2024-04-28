@@ -7,6 +7,9 @@ import { Answer, Question, Quiz } from '../classes/Quiz';
   providedIn: 'root'
 })
 export class QuizService {
+  getquizbyname(quiz: number | undefined) {
+    throw new Error('Method not implemented.');
+  }
 
   private baseUrl = 'http://localhost:3000/api/quizzes/';
 
